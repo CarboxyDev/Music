@@ -61,6 +61,42 @@ var SONGS =
 		artist:"Different Heaven",
 		file:"safe_and_sound",
 		image:"ncs"
+	},
+	11:{
+		name:"Barcelona",
+		artist:"Ed Sheeran",
+		file:"barcelona",
+		image:"divide"
+	},
+	12:{
+		name:"Photograph",
+		artist:"Ed Sheeran",
+		file:"photograph",
+		image:"multiply"
+	},
+	13:{
+		name:"War",
+		artist:"Linkin Park",
+		file:"war",
+		image:"the_hunting_party"
+	},
+	14:{
+		name:"One",
+		artist:"Ed Sheeran",
+		file:"one",
+		image:"multiply"
+	},
+	15:{
+		name:"Galway Girl",
+		artist:"Ed Sheeran",
+		file:"galway_girl",
+		image:"divide"
+	},
+	16:{
+		name:"The Office Theme",
+		artist:"Michael Scott",
+		file:"the_office_theme",
+		image:"the_office"
 	}
 
 
@@ -81,7 +117,6 @@ var fillBar = document.getElementById("fill");
 var song = new Audio();
 
 
-
 song.addEventListener('timeupdate',function(){
 	console.log(song.currentTime);
 	var pos = song.currentTime / song.duration;
@@ -90,7 +125,10 @@ song.addEventListener('timeupdate',function(){
 
 });
 
+song.addEventListener("ended",function(){
 
+	playSong()
+})
 
 
 
@@ -101,7 +139,13 @@ function playSong(){
 	song_obj = SONGS[currentSong];
 	console.log(song_obj);
 	if (song_obj == undefined){
-		currentSong = 1;
+		if (currentSong < 1){
+			currentSong = Object.keys(SONGS).length;
+		}
+		else {
+			currentSong = 1;
+		}
+		
 		song_obj = SONGS[currentSong];
 
 	}
@@ -174,6 +218,7 @@ function playFirst(){
 		$("#play").addClass("play-mobile");
 		$("#seekbar-mobile").css("visibility","visible");
 	}
+
 	$("#play").attr("onclick","playPause()");
 
 	playSong();
