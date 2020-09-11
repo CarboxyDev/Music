@@ -1,14 +1,26 @@
 body{
-	background-color: #1e1b1e;
+	background-color: #171617;
 	color:white;
 	margin:0;
 	padding:0;
 	font-family: verdana;
+	overflow:hidden;
+	font-family: "Open Sans";
 }
 
+.acme {
+	font-family: acme;
+}
+
+.open-sans {
+	font-family: "Open Sans";
+}
+.lato {
+	font-family: "Lato";
+}
 
 #main {
-	width:40%;
+	width:40vw;
 	background-color: #403540;
 	border-radius:10px;
 	position: absolute;
@@ -48,6 +60,46 @@ body{
 
 
 }
-#back,#next{
+
+#back,#next,#back-mobile,#next-mobile{
 	visibility:hidden ;
 }
+
+
+
+
+
+
+
+#main-mobile{
+	
+}
+
+#image-mobile {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+#img-mobile {
+	height:40vh;
+	width:40vh;
+	border-radius: 15px;
+
+}
+#buttons-mobile{
+	margin-top:20vh;
+}
+
+
+#song_title-mobile{
+	font-size:1.4rem;
+	text-align: center;
+	color:#6f42c1;
+
+}
+.play-mobile{
+	margin-left:0.75rem;
+	margin-right:0.75rem;
+
+}
+
+
