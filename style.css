@@ -1,0 +1,53 @@
+body{
+	background-color: #1e1b1e;
+	color:white;
+	margin:0;
+	padding:0;
+	font-family: verdana;
+}
+
+
+#main {
+	width:40%;
+	background-color: #403540;
+	border-radius:10px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	z-index:999;
+	padding:1rem;
+}
+
+#image {
+	padding-top: 5vh;
+	padding-bottom: 25vh;
+}
+#img {
+	height:25%;
+	width:25%;
+	border-radius: 15px;
+
+}
+
+#player {
+
+}
+
+
+#song_title{
+	font-size:1.5rem;
+	position:absolute;
+	top:60%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+
+
+#play,#pause{
+
+
+}
+#back,#next{
+	visibility:hidden ;
+}
