@@ -19,6 +19,11 @@ body{
 	font-family: "Lato";
 }
 
+.fa {
+	font-size:2rem;
+
+}
+
 #main {
 	width:40vw;
 	background-color: #403540;
@@ -86,7 +91,7 @@ body{
 
 }
 #buttons-mobile{
-	margin-top:20vh;
+	margin-top:12vh;
 }
 
 
@@ -101,5 +106,72 @@ body{
 	margin-right:0.75rem;
 
 }
+
+
+
+
+#seekbar {
+	margin-top:10vh;
+	position: relative;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width:75%;
+	height: 5px;
+	background-color: gray;
+	display:flex;
+	border-radius: 50px;
+	cursor:pointer;
+	visibility: hidden;
+
+}
+
+#seekbar-mobile{
+	cursor:pointer;
+	border-radius: 2rem;
+	display:flex;
+	background-color: gray;
+	margin-top:10vh;
+	height:0.5rem;
+	width:70%;
+	position: relative;
+	left:50%;
+	transform:translate(-50%,-50%);
+	visibility: hidden;
+
+}
+
+
+
+
+#fill {
+	height:5px;
+	background-color: royalblue;
+	border-radius: 20px;
+
+}
+
+#fill-mobile{
+	height:100%;
+	background-color: royalblue;
+	border-radius: 20px;
+}
+
+#handle {
+	width:8px;
+	height:8px;
+	background-color: royalblue;
+	border-radius: 50%;
+	margin-left:-5px;
+	transform:scale(2);
+}
+#handle-mobile {
+	width:8px;
+	height:8px;
+	background-color: royalblue;
+	border-radius: 50%;
+	margin-left:-5px;
+	transform:scale(2);
+}
+
 
 

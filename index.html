@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="files/sweetalert2.css" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Acme&family=Lato&family=Balsamiq+Sans&family=Fredoka+One&family=Rambla&display=swap" rel="stylesheet"> 
-
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
 </head>
@@ -26,10 +26,21 @@
 
 		</div>
 		<div id="buttons" class="text-center lato">
-			<button id="back" class="btn btn-sm btn-success" onclick="back()">Back</button>
-			<button id="start" class="btn btn btn-primary" onclick="playFirst()">Start</button>
-			<button id="next" class="btn btn-sm btn-success" onclick="next()">Next</button>
+			<button id="back" class="btn btn-sm btn-secondary" onclick="back()"><i class="fa fa-backward "></i></button>
+			<button id="start" class="btn btn-lg btn-success" onclick="playFirst()">Start</button>
+			<button id="next" class="btn btn-sm btn-secondary" onclick="next()"><i class="fa fa-forward "></i></button>
 		</div>
+
+		<div id="seekbar" class="text-center">
+			<p id="time">
+			<span id="current_time"></span>
+			<span id="song_time"></span>
+			</p>
+			<div id="fill"></div>
+			<div id="handle"></div>
+		</div>
+
+
 	</div>
 
 

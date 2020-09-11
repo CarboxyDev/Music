@@ -76,8 +76,20 @@ var IS_MOBILE = false;
 var songTitle = document.getElementById("song_title");
 var songImage = document.getElementById("img");
 var currentSong = 1;
+var fillBar = document.getElementById("fill");
 
 var song = new Audio();
+
+
+
+song.addEventListener('timeupdate',function(){
+	console.log(song.currentTime);
+	var pos = song.currentTime / song.duration;
+	fillBar.style.width = pos*100+"%";
+
+
+});
+
 
 
 
@@ -96,9 +108,9 @@ function playSong(){
 	if (!song_obj.image){
 		song_obj.image = "main"
 	}
-
-	song.src = `songs/${song_obj.file}.mp3`;
 	songImage.src = `images/${song_obj.image}.png`;
+	song.src = `songs/${song_obj.file}.mp3`;
+	
 	if (!IS_MOBILE){
 		$("#song_title").text(song_obj.name);
 	}
@@ -108,8 +120,6 @@ function playSong(){
 	
 
 	song.play();
-
-
 
 
 }
@@ -130,11 +140,11 @@ function next(){
 function playPause(){
 	if (song.paused){
 		song.play();
-		$("#play").text("Pause");
+		$("#play").html(`<i class="fa fa-pause"></i>`);
 	}
 	else {
 		song.pause();
-		$("#play").text("Play");
+		$("#play").html(`<i class="fa fa-play"></i>`);
 	}
 
 }
@@ -147,21 +157,22 @@ function playPause(){
 function playFirst(){
 	if (!IS_MOBILE){
 
-		$("#start").text("Pause");
+		$("#start").html(`<i class="fa fa-pause"></i>`);
 		$("#start").attr("onclick",null);
 		$("#start").attr("id","play");
 		$("#back").css("visibility","visible");
 		$("#next").css("visibility","visible");
-
+		$("#seekbar").css("visibility","visible");
 	}
 	else if (IS_MOBILE){
 
-		$("#start-mobile").text("Pause");
+		$("#start-mobile").html(`<i class="fa fa-pause"></i>`)
 		$("#start-mobile").attr("onclick",null);
 		$("#start-mobile").attr("id","play");
 		$("#back-mobile").css("visibility","visible");
 		$("#next-mobile").css("visibility","visible");
 		$("#play").addClass("play-mobile");
+		$("#seekbar-mobile").css("visibility","visible");
 	}
 	$("#play").attr("onclick","playPause()");
 
@@ -209,14 +220,15 @@ function mobileDisplay(){
 	$("#back").attr("id","back-mobile");
 	$("#next").attr("id","next-mobile");
 	$("#start").attr("id","start-mobile");
-
-
+	$("#seekbar").attr("id","seekbar-mobile");
+	$("#fill").attr("id","fill-mobile");
+	$("#handle").attr("id","handle-mobile");
 
 
 
 	songTitle = document.getElementById("song_title-mobile");
 	songImage = document.getElementById("img-mobile");
-
+	var fillBar = document.getElementById("fill-mobile");
 
 }
 
