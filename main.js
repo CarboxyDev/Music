@@ -110,6 +110,7 @@ var IS_MOBILE = false;
 //
 
 var songTitle = document.getElementById("song_title");
+var artistName = document.getElementById("artist_name");
 var songImage = document.getElementById("img");
 var currentSong = 1;
 var fillBar = document.getElementById("fill");
@@ -160,6 +161,7 @@ function playSong(){
 	}
 	else if (IS_MOBILE){
 		$("#song_title-mobile").text(song_obj.name);
+		$("#artist_name-mobile").text(song_obj.artist);
 	}
 	
 
@@ -261,6 +263,7 @@ function mobileDisplay(){
 	$("#img").attr("id","img-mobile");
 	$("#player").attr("id","player-mobile");
 	$("#song_title").attr("id","song_title-mobile");
+	$("#artist_name").attr("id","artist_name-mobile");
 	$("#buttons").attr("id","buttons-mobile");
 	$("#back").attr("id","back-mobile");
 	$("#next").attr("id","next-mobile");
