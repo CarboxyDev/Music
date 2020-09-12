@@ -112,6 +112,8 @@ var IS_MOBILE = false;
 var songTitle = document.getElementById("song_title");
 var artistName = document.getElementById("artist_name");
 var songImage = document.getElementById("img");
+
+
 var currentSong = 1;
 var fillBar = document.getElementById("fill");
 
@@ -119,9 +121,11 @@ var song = new Audio();
 
 
 song.addEventListener('timeupdate',function(){
-	console.log(song.currentTime);
+
 	var pos = song.currentTime / song.duration;
 	fillBar.style.width = pos*100+"%";
+
+	songCtime();
 
 
 });
@@ -132,13 +136,13 @@ song.addEventListener("ended",function(){
 })
 
 
-
+var durationDisplayLag;
 
 
 function playSong(){
 
-	song_obj = SONGS[currentSong];
-	console.log(song_obj);
+	var song_obj = SONGS[currentSong];
+	
 	if (song_obj == undefined){
 		if (currentSong < 1){
 			currentSong = Object.keys(SONGS).length;
@@ -155,20 +159,68 @@ function playSong(){
 	}
 	songImage.src = `images/${song_obj.image}.png`;
 	song.src = `songs/${song_obj.file}.mp3`;
-	
+	song.play();
+
+
 	if (!IS_MOBILE){
 		$("#song_title").text(song_obj.name);
 	}
 	else if (IS_MOBILE){
 		$("#song_title-mobile").text(song_obj.name);
 		$("#artist_name-mobile").text(song_obj.artist);
+		
+		
+		durationDisplayLag = setInterval(function(){
+
+			$("#song_time-mobile").text(duration());
+
+			clearInterval(durationDisplayLag);
+
+
+		},400)
 	}
 	
 
-	song.play();
+	
 
 
 }
+
+function duration(){
+		
+	let dur = Math.round(song.duration,1);
+
+	let mins = Math.floor(dur/60);
+
+	let sec = dur -(mins*60);
+
+	if (sec < 10){
+		sec = `0${sec}`;
+	}
+	let val = `${mins}:${sec}`;
+	if (isNaN(dur)){
+		val = "XX:YY"
+	}
+	return val;
+}
+
+
+
+function songCtime(){
+	let t = Math.round(song.currentTime,1);
+	let mins = Math.floor(t/60);
+	let sec = t - (mins*60);
+
+	if (sec < 10){
+		sec = `0${sec}`;
+	}
+	let val = `${mins}:${sec}`;
+	console.log(val);
+	if (IS_MOBILE){
+		$("#current_time-mobile").text(val);
+	}
+}
+
 
 
 
@@ -219,6 +271,7 @@ function playFirst(){
 		$("#next-mobile").css("visibility","visible");
 		$("#play").addClass("play-mobile");
 		$("#seekbar-mobile").css("visibility","visible");
+		$("#time-mobile").css("visibility","visible");
 	}
 
 	$("#play").attr("onclick","playPause()");
@@ -271,6 +324,9 @@ function mobileDisplay(){
 	$("#seekbar").attr("id","seekbar-mobile");
 	$("#fill").attr("id","fill-mobile");
 	$("#handle").attr("id","handle-mobile");
+	$("#time").attr("id","time-mobile");
+	$("#current_time").attr("id","current_time-mobile");
+	$("#song_time").attr("id","song_time-mobile");
 
 
 

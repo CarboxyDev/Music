@@ -104,7 +104,7 @@ body{
 
 }
 #buttons-mobile{
-	margin-top:8vh;
+	margin-top:2vh;
 }
 
 
@@ -123,6 +123,36 @@ body{
 	font-weight: 300;
 	margin-left:15%;
 }
+
+
+#time,#time-mobile {
+	visibility: hidden;
+}
+
+
+#time-mobile {
+	margin-top: 2.5%;
+}
+
+#current_time-mobile{
+	color:#736b6b;
+	font-weight: 200;
+	font-size:0.85rem;
+	margin-left:16%;
+}
+
+#song_time-mobile{
+	color:#736b6b;
+	font-weight: 200;
+	font-size:0.85rem;
+	margin-left:51%;
+
+}
+
+
+
+
+
 
 
 .play-mobile{
