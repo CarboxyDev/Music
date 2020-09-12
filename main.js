@@ -133,8 +133,11 @@ song.addEventListener('timeupdate',function(){
 
 });
 
-song.addEventListener("ended",function(){
 
+
+
+song.addEventListener("ended",function(){
+	currentSong += 1;
 	playSong()
 })
 
@@ -226,7 +229,7 @@ function songCtime(){
 		sec = `0${sec}`;
 	}
 	let val = `${mins}:${sec}`;
-	console.log(val);
+	
 	if (IS_MOBILE){
 		$("#current_time-mobile").text(val);
 	}
@@ -273,6 +276,7 @@ function playPause(){
 		$("#play").html(`<i class="fa fa-pause "></i>`);
 	}
 	else {
+		song.currentTime -= 1;
 		song.pause();
 		$("#play").html(`<i class="fa fa-play "></i>`);
 	}
@@ -311,6 +315,76 @@ function playFirst(){
 
 	playSong();
 }
+
+
+
+
+/*
+function imageAnimation(){
+	var opacity = 1;
+	opac_order = "dec";
+	var imageAnim = setInterval(function(){
+		
+		if (opacity >= 1){
+			opac_order = "dec";
+		}
+		else if (opacity <= 0.5){
+			opac_order = "inc"
+		}
+
+		if (opac_order == "dec"){
+			opacity -= 0.05;
+		}
+		if (opac_order == "inc"){
+			opacity += 0.05;
+		}
+		opacity = (opacity*100)/10;
+		console.log(opacity);
+		$("#img").css("opacity",opacity);
+	},250);
+}
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -373,7 +447,16 @@ function mobileDisplay(){
 
 
 
+function extra(){
+/*
+	$("#seekbar-mobile").click(function(){
+		var x = event.clientX;
+		console.log(x)
+		$("#handle").css("position","absolute");
+		$("#handle").css("left",x);
 
+	});*/
+}
 
 
 
@@ -387,7 +470,7 @@ function mobileDisplay(){
 
 function main(){
 	page_load();
-	
+	extra();
 
 
 }
