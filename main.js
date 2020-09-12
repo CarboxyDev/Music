@@ -97,6 +97,54 @@ var SONGS =
 		artist:"Michael Scott",
 		file:"the_office_theme",
 		image:"the_office"
+	},
+	17:{
+		name:"Waiting For Love",
+		artist:"Avicii",
+		file:"waiting_for_love",
+		image:"stories"
+	},
+	18:{
+		name:"I Don't Care",
+		artist:"Ed Sheeran",
+		file:"i_dont_care",
+		image:"collaborations"
+	},
+	19:{
+		name:"Breaking The Habit",
+		artist:"Linkin Park",
+		file:"breaking_the_habit",
+		image:"meteora"
+	},
+	20:{
+		name:"The Days",
+		artist:"Avicii",
+		file:"the_days",
+		image:"stories"
+	},
+	21:{
+		name:"The Nights",
+		artist:"Avicii",
+		file:"the_nights",
+		image:"stories"
+	},
+	22:{
+		name:"Thinking Out Loud",
+		artist:"Ed Sheeran",
+		file:"thinking_out_loud",
+		image:"multiply"
+	},
+	23:{
+		name:"Tenerife Sea",
+		artist:"Ed Sheeran",
+		file:"tenerife_sea",
+		image:"multiply"
+	},
+	24:{
+		name:"Dream Of Something Sweet",
+		artist:"K-391",
+		file:"dream_of_something_sweet",
+		image:"ncs2"
 	}
 
 
