@@ -186,11 +186,11 @@ function next(){
 function playPause(){
 	if (song.paused){
 		song.play();
-		$("#play").html(`<i class="fa fa-pause"></i>`);
+		$("#play").html(`<i class="fa fa-pause "></i>`);
 	}
 	else {
 		song.pause();
-		$("#play").html(`<i class="fa fa-play"></i>`);
+		$("#play").html(`<i class="fa fa-play "></i>`);
 	}
 
 }
