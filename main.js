@@ -118,6 +118,9 @@ var currentSong = 1;
 var fillBar = document.getElementById("fill");
 
 var song = new Audio();
+var shuffle = false;
+
+
 
 
 song.addEventListener('timeupdate',function(){
@@ -140,6 +143,13 @@ var durationDisplayLag;
 
 
 function playSong(){
+	if (shuffle){
+		let tempCurrentSong = currentSong;
+		currentSong = randint(1,Object.keys(SONGS).length);
+		while (currentSong == tempCurrentSong){
+			playSong();
+		}
+	}
 
 	var song_obj = SONGS[currentSong];
 	
@@ -171,13 +181,13 @@ function playSong(){
 		
 		
 		durationDisplayLag = setInterval(function(){
-
-			$("#song_time-mobile").text(duration());
+			let ct = duration();
+			$("#song_time-mobile").text(ct);
 
 			clearInterval(durationDisplayLag);
 
 
-		},1000)
+		},500)
 	}
 	
 
@@ -199,10 +209,11 @@ function duration(){
 	}
 	let val = `${mins}:${sec}`;
 	if (isNaN(dur)){
-		val = "XX:YY"
+		duration();
 	}
 	return val;
 }
+
 
 
 
@@ -220,6 +231,27 @@ function songCtime(){
 		$("#current_time-mobile").text(val);
 	}
 }
+
+
+// remember to fix the XX:YY issue ok;
+function toggleShuffle(){
+	
+	if (shuffle){
+		shuffle = false;
+		if (IS_MOBILE){
+			$("#shuffle-mobile").css("color","#867f7f");
+		}
+		
+	}
+	else {
+		shuffle = true;
+		if (IS_MOBILE){
+			$("#shuffle-mobile").css("color","#289c22");
+		}
+	}
+
+}
+
 
 
 
@@ -272,6 +304,7 @@ function playFirst(){
 		$("#play").addClass("play-mobile");
 		$("#seekbar-mobile").css("visibility","visible");
 		$("#time-mobile").css("visibility","visible");
+		$("#shuffle-mobile").css("visibility","visible")
 	}
 
 	$("#play").attr("onclick","playPause()");
@@ -304,7 +337,7 @@ function page_load(){
 
 function pcDisplay(){
 	
-
+	document.write("Not supported for desktop for now. Use Phone.");
 }
 
 
@@ -327,7 +360,7 @@ function mobileDisplay(){
 	$("#time").attr("id","time-mobile");
 	$("#current_time").attr("id","current_time-mobile");
 	$("#song_time").attr("id","song_time-mobile");
-
+	$("#shuffle").attr("id","shuffle-mobile");
 
 
 	songTitle = document.getElementById("song_title-mobile");
