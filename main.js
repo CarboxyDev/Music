@@ -177,7 +177,7 @@ function playSong(){
 			clearInterval(durationDisplayLag);
 
 
-		},400)
+		},1000)
 	}
 	
 
