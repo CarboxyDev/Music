@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Lyrics Project</title>
+<title>Music Player</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,29 +9,68 @@
 <link rel="stylesheet" href="files/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="style.css" type="text/css">
 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Acme&family=Lato&family=Balsamiq+Sans&?family=Roboto&family=Fredoka+One&family=Comfortaa&display=swap" rel="stylesheet"> 
+
+<link rel="stylesheet" href="files/sweetalert2.css" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Acme&family=Lato&family=Balsamiq+Sans&?family=Roboto&family=Fredoka+One&family=Rambla&display=swap" rel="stylesheet"> 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 
 
 </head>
-<body>
-
+<body class="gradient-anim">
 <div id="main" class="">
-
-	<div id="lyrics-container">
-		<span id="lyrics" class="casual">
+	<div id="image" class="text-center">
+		<img id="img" src="images/main.png" />
+	</div>
+	<div id="player">
+		<div id="song_title" class="bal">
+		</div>
+		<div id="artist_name" class="">
+		</div>
+		<div id="seekbar" class="text-center">
 			
-		</span>
+			<div id="fill"></div>
+			
+
+
+			<div id="handle"></div>
+
+
+
+		</div>
+		<div id="time">
+			<span id="current_time">0:00</span>
+			<span id="song_time">0:00</span>
+		</div>
+
+		<div id="buttons" class="text-center lato">
+			<span id="back" class="" onclick="back()"><i class="fa fa-backward fa-2x "></i></span>
+			<button id="start" class="border-0 btn btn-lg btn-success" onclick="playFirst()">PLAY</button>
+			<span id="next" class="" onclick="next()"><i class="fa fa-forward fa-2x"></i></span>
+		</div>
+
+		<div id="shuffle" class="">
+			<i onclick="toggleShuffle()" class="fa fa-random"></i>
+		</div>
+		<div id="filter" class="">
+			<i onclick="filter()" class="fa fa-bars">
+			</i>
+		</div>  
+
 	</div>
 
+
+
+
+
+
+
+
+
+
 </div>
-<button onclick = "playSong()" class="w3-btn w3-green w3-display-bottomright">
-</button>
-
-
-
 
 
 
@@ -39,9 +78,16 @@
 
 <script src="files/jquery-min.js"></script>
 <script src="files/utility.js"></script>
-<script src="lyrics.js"></script>
+<script src="files/sweetalert2.js"></script>
+<script src="main.js"></script>
 <noscript>Please Enable Javascript To Load this Page Successfully.</noscript>
+
 </body>
 </html>
+
+
+
+
+
 
 
