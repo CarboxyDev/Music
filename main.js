@@ -608,20 +608,38 @@ function mobileDisplay(){
 
 
 
+
+song.addEventListener('timeupdate',function(){
+
+	var pos = song.currentTime / song.duration;
+	fillBar.style.width = pos*100+"%";
+
+	songCtime();
+
+
+});
+
 function extra(){
-/*
+
 	$("#seekbar-mobile").click(function(){
 		var x = event.clientX;
-		console.log(x)
-		$("#handle").css("position","absolute");
-		$("#handle").css("left",x);
-
-	});*/
+		var goto = x-50;
+		
+		songManipulate(goto);
+	});
 }
 
 
 
+function songManipulate(goto){
 
+	let reverseWidth  = Math.round((goto/$("#seekbar-mobile").width())*100);
+	 
+	song.currentTime = (song.duration*reverseWidth)/100;
+
+
+	
+}
 
 
 
