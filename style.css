@@ -134,15 +134,15 @@ body{
 #current_time-mobile{
 	color:#736b6b;
 	font-weight: 200;
-	font-size:0.85rem;
+	font-size:0.9rem;
 	margin-left:16%;
 }
 
 #song_time-mobile{
 	color:#736b6b;
 	font-weight: 200;
-	font-size:0.85rem;
-	margin-left:51%;
+	font-size:0.9rem;
+	margin-left:50%;
 
 }
 
@@ -212,7 +212,7 @@ body{
 
 #fill-mobile{
 	height:100%;
-	background-color: royalblue;
+	background-color: white;
 	border-radius: 20px;
 }
 
@@ -226,9 +226,9 @@ body{
 }
 
 #handle-mobile {
-	width:6px;
-	height:6px;
-	background-color: royalblue;
+	width:4.5px;
+	height:4.5px;
+	background-color: white;
 	border-radius: 50%;
 	margin-left:-5px;
 	transform:scale(2.1);
@@ -243,8 +243,19 @@ body{
 	position:relative;
 	left:3%;
 	font-size:1.5rem;
+	color:#867f7f;
+	display:inline;
+}
+
+#filter-mobile {
+	display: inline;
+	visibility: hidden;
+	position:relative;
+	left:81%;
+	font-size:1.5rem;
 	color:#867f7f;	
 }
+
 
 
 

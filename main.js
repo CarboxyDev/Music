@@ -164,11 +164,11 @@ var songImage = document.getElementById("img");
 
 var currentSong = 1;
 var fillBar = document.getElementById("fill");
-
+var SONGS_BACKUP = SONGS;
 var song = new Audio();
 var shuffle = false;
-
-
+var filterStatus = false;
+var filteredArtist = null;
 
 
 song.addEventListener('timeupdate',function(){
@@ -194,6 +194,29 @@ var durationDisplayLag;
 
 
 function playSong(){
+	if (filterStatus == true){
+
+		SONGS = {};
+		var counter = 0;
+		for (var x in SONGS_BACKUP){
+
+			var search = Object.values(SONGS_BACKUP);
+			if (SONGS_BACKUP[x]["artist"]  == filteredArtist){
+				counter += 1;
+				
+				SONGS[counter] = SONGS_BACKUP[x];
+			}
+			
+		}
+		
+
+
+
+	}
+	if (!filterStatus){
+		SONGS = SONGS_BACKUP;
+	}
+
 	if (shuffle){
 		let tempCurrentSong = currentSong;
 		currentSong = randint(1,Object.keys(SONGS).length);
@@ -304,6 +327,95 @@ function toggleShuffle(){
 }
 
 
+function filter(){
+
+	let html = `
+	<button onclick="artistFilter('disable')"
+	id="all-filter-btn" class="btn btn-success bal">
+	All Songs</button><br><br><br>
+
+	<button onclick="artistFilter('Ed Sheeran')" 
+	id="ed-sheeran-filter-btn" class="btn btn-info bal">
+	Ed Sheeran Songs
+	</button><br><br>
+
+	<button onclick="artistFilter('Linkin Park')" 
+	id="linkin-parl-filter-btn" class="btn btn-info bal">
+	Linkin Park Songs
+	</button>
+
+
+
+	`;
+	Swal.fire({
+		html:html,
+		background:"#171617",
+		position:"top-start",
+		showConfirmButton:false,
+		showCloseButton:true,
+		grow:"column",
+		width:"90%",
+		customClass: {
+    		popup: `
+		      animate__animated
+		      animate__fadeInLeft
+		     
+		    `
+ 		},
+  		hideClass: {
+    		popup: `
+    			animate__animated
+      			animate__fadeOutLeft
+      			animate__faster
+    		`
+  		}
+
+	})
+}
+
+
+function artistFilter(artist){
+	if (artist == "disable"){
+		filterStatus = false;
+		toast.fire({
+			title:"All songs visible",
+			icon:"success"
+		})
+	}
+	else {
+		filterStatus = true;
+		filteredArtist = artist;
+		toast.fire({
+			title:`Only ${artist} songs visible`,
+			icon:"success"
+		})
+	}
+
+	
+}
+
+
+
+
+
+const toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 2000,
+  timerProgressBar: true
+ 
+})
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -356,7 +468,8 @@ function playFirst(){
 		$("#play").addClass("play-mobile");
 		$("#seekbar-mobile").css("visibility","visible");
 		$("#time-mobile").css("visibility","visible");
-		$("#shuffle-mobile").css("visibility","visible")
+		$("#shuffle-mobile").css("visibility","visible");
+		$("#filter-mobile").css("visibility","visible");
 	}
 
 	$("#play").attr("onclick","playPause()");
@@ -483,7 +596,7 @@ function mobileDisplay(){
 	$("#current_time").attr("id","current_time-mobile");
 	$("#song_time").attr("id","song_time-mobile");
 	$("#shuffle").attr("id","shuffle-mobile");
-
+	$("#filter").attr("id","filter-mobile");
 
 	songTitle = document.getElementById("song_title-mobile");
 	songImage = document.getElementById("img-mobile");
