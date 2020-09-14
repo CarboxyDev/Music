@@ -167,6 +167,7 @@ var fillBar = document.getElementById("fill");
 var SONGS_BACKUP = SONGS;
 var song = new Audio();
 var shuffle = false;
+var loop = false;
 var filterStatus = false;
 var filteredArtist = null;
 
@@ -185,7 +186,10 @@ song.addEventListener('timeupdate',function(){
 
 
 song.addEventListener("ended",function(){
-	currentSong += 1;
+	if (!loop){
+		currentSong += 1;
+	}
+	
 	playSong()
 })
 
@@ -216,14 +220,19 @@ function playSong(){
 	if (!filterStatus){
 		SONGS = SONGS_BACKUP;
 	}
+	if (!loop){
 
-	if (shuffle){
-		let tempCurrentSong = currentSong;
-		currentSong = randint(1,Object.keys(SONGS).length);
-		while (currentSong == tempCurrentSong){
-			playSong();
+		if (shuffle){
+			let tempCurrentSong = currentSong;
+			currentSong = randint(1,Object.keys(SONGS).length);
+			while (currentSong == tempCurrentSong){
+				playSong();
+			}
 		}
+
+
 	}
+
 
 	var song_obj = SONGS[currentSong];
 	
@@ -325,6 +334,35 @@ function toggleShuffle(){
 	}
 
 }
+
+
+function toggleLoop(){
+
+	if (loop){
+		loop = false;
+		if (IS_MOBILE){
+			$("#loop-mobile").css("color","#867f7f");
+		}
+		
+	}
+	else {
+		loop = true;
+		if (IS_MOBILE){
+			$("#loop-mobile").css("color","royalblue");
+		}
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 function filter(){
@@ -470,6 +508,7 @@ function playFirst(){
 		$("#time-mobile").css("visibility","visible");
 		$("#shuffle-mobile").css("visibility","visible");
 		$("#filter-mobile").css("visibility","visible");
+		$("#loop-mobile").css("visibility","visible");
 	}
 
 	$("#play").attr("onclick","playPause()");
@@ -597,6 +636,7 @@ function mobileDisplay(){
 	$("#song_time").attr("id","song_time-mobile");
 	$("#shuffle").attr("id","shuffle-mobile");
 	$("#filter").attr("id","filter-mobile");
+	$("#loop").attr("id","loop-mobile");
 
 	songTitle = document.getElementById("song_title-mobile");
 	songImage = document.getElementById("img-mobile");

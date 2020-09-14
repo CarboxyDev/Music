@@ -27,6 +27,9 @@ body{
 
 
 
+
+
+
 .fa {
 	font-size:2rem;
 
@@ -250,12 +253,23 @@ body{
 #filter-mobile {
 	display: inline;
 	visibility: hidden;
-	position:relative;
-	left:81%;
+	/*position:relative; this is code for right bottom
+	left:73%;*/	
 	font-size:1.5rem;
-	color:#867f7f;	
+	color:#867f7f;
+	margin-right: 3%;
+	margin-top: 1%;
+
 }
 
+#loop-mobile {
+	visibility: hidden;
+	position:relative;
+	left:82%;
+	font-size:1.5rem;
+	color:#867f7f;
+	display:inline;
+}
 
 
 
