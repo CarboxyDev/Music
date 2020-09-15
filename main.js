@@ -523,6 +523,7 @@ function playFirst(){
 		$("#filter-mobile").css("visibility","visible");
 		$("#loop-mobile").css("visibility","visible");
 		$("#lyrics-mobile").css("visibility","visible");
+		$("#drawer-mobile").css("visibility","visible");
 
 	}
 
@@ -625,8 +626,16 @@ function page_load(){
 }
 
 function pcDisplay(){
-	
-	document.write("Not supported for desktop for now. Use Phone.");
+	let html = 
+	`
+	<div class="w3-display-middle">
+	<h2 class="w3-text-amber casual">Please use a mobile to access this site.</h2>
+	<br><br>
+	<h5 class="w3-text-gray casual">Alternatively, you could use mobile display on PC</h5>
+	</div>
+	`
+	$("body").html(html);
+	$("body").css("background-color","black");
 }
 
 
@@ -652,9 +661,10 @@ function mobileDisplay(){
 	$("#shuffle").attr("id","shuffle-mobile");
 	$("#filter").attr("id","filter-mobile");
 	$("#loop").attr("id","loop-mobile");
+
 	$("#lyrics").attr("id","lyrics-mobile");
 	$("#lyrics-mobile").attr("onclick","lyricsMobile()");
-
+	$("#drawer").attr("id","drawer-mobile");
 
 	songTitle = document.getElementById("song_title-mobile");
 	songImage = document.getElementById("img-mobile");
@@ -726,7 +736,7 @@ function lyricsMobile(){
 		grow:"row",
 		showConfirmButton:false,
 		customClass:{
-			popup:"lyrics-popup-mobile"
+			popup:`lyrics-popup-mobile`
 		},
 		onOpen:() => {
 			showLyrics = true;
