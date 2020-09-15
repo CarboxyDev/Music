@@ -11,7 +11,7 @@
 
 
 <link rel="stylesheet" href="files/sweetalert2.css" type="text/css">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Acme&family=Lato&family=Balsamiq+Sans&?family=Roboto&family=Fredoka+One&family=Rambla&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Acme&family=Lato&family=Balsamiq+Sans&?family=Roboto&family=Rambla&family=Comfortaa&display=swap" rel="stylesheet"> 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -46,24 +46,39 @@
 		</div>
 
 		<div id="buttons" class="text-center lato">
-			<span id="back" class="" onclick="back()"><i class="fa fa-backward fa-2x "></i></span>
+			<span id="back" class="" onclick="back()"><i class="fa fa-backward"></i></span>
 			<button id="start" class="border-0 btn btn-lg btn-success" onclick="playFirst()">PLAY</button>
-			<span id="next" class="" onclick="next()"><i class="fa fa-forward fa-2x"></i></span>
-		</div>
+			<span id="next" class="" onclick="next()"><i class="fa fa-forward"></i></span>
+		
+			<br>
+			<span id="shuffle">
+			<i onclick="toggleShuffle()" class="fa fa-random">
+			</i></span>
+	
 
-		<div id="shuffle" class="">
-			<i onclick="toggleShuffle()" class="fa fa-random"></i>
-		</div>
-
-		<div id="loop" class="">
+			<span id="loop">
 			<i onclick="toggleLoop()" class="fa fa-undo">
-			</i>
+			</i></span>
+
+
+
+
+
 		</div>
+
+	
+
 
 		<div id="filter" class="w3-display-topright">
 			<i onclick="filter()" class="fa fa-bars">
 			</i>
-		</div>  
+		</div> 
+
+
+
+		<div id="lyrics" onclick="lyrics()" class="">
+			<span class="">LYRICS</span>
+		</div>
 
 	</div>
 
@@ -85,6 +100,7 @@
 <script src="files/jquery-min.js"></script>
 <script src="files/utility.js"></script>
 <script src="files/sweetalert2.js"></script>
+<script src="lyrics.js"></script>
 <script src="main.js"></script>
 <noscript>Please Enable Javascript To Load this Page Successfully.</noscript>
 

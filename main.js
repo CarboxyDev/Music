@@ -170,7 +170,8 @@ var shuffle = false;
 var loop = false;
 var filterStatus = false;
 var filteredArtist = null;
-
+var showLyrics = false;
+var lyricsExists = false;
 
 song.addEventListener('timeupdate',function(){
 
@@ -178,6 +179,18 @@ song.addEventListener('timeupdate',function(){
 	fillBar.style.width = pos*100+"%";
 
 	songCtime();
+
+	if (showLyrics){
+		if (lyricsExists){
+
+			var ctime = Math.round(song.currentTime);
+			var timestamps = Object.keys(LYRICS[currentSong]);
+			if (timestamps.includes(`${ctime}`)){
+				$("#lyrics-text-mobile").html(LYRICS[currentSong][ctime]);
+			}		
+		}
+
+	}
 
 
 });
@@ -234,9 +247,9 @@ function playSong(){
 	}
 
 
-	var song_obj = SONGS[currentSong];
+	var songObj = SONGS[currentSong];
 	
-	if (song_obj == undefined){
+	if (songObj == undefined){
 		if (currentSong < 1){
 			currentSong = Object.keys(SONGS).length;
 		}
@@ -244,23 +257,23 @@ function playSong(){
 			currentSong = 1;
 		}
 		
-		song_obj = SONGS[currentSong];
+		songObj = SONGS[currentSong];
 
 	}
-	if (!song_obj.image){
-		song_obj.image = "main"
+	if (!songObj.image){
+		songObj.image = "main"
 	}
-	songImage.src = `images/${song_obj.image}.png`;
-	song.src = `songs/${song_obj.file}.mp3`;
+	songImage.src = `images/${songObj.image}.png`;
+	song.src = `songs/${songObj.file}.mp3`;
 	song.play();
 
 
 	if (!IS_MOBILE){
-		$("#song_title").text(song_obj.name);
+		$("#song_title").text(songObj.name);
 	}
 	else if (IS_MOBILE){
-		$("#song_title-mobile").text(song_obj.name);
-		$("#artist_name-mobile").text(song_obj.artist);
+		$("#song_title-mobile").text(songObj.name);
+		$("#artist_name-mobile").text(songObj.artist);
 		
 		
 		durationDisplayLag = setInterval(function(){
@@ -509,6 +522,8 @@ function playFirst(){
 		$("#shuffle-mobile").css("visibility","visible");
 		$("#filter-mobile").css("visibility","visible");
 		$("#loop-mobile").css("visibility","visible");
+		$("#lyrics-mobile").css("visibility","visible");
+
 	}
 
 	$("#play").attr("onclick","playPause()");
@@ -637,6 +652,9 @@ function mobileDisplay(){
 	$("#shuffle").attr("id","shuffle-mobile");
 	$("#filter").attr("id","filter-mobile");
 	$("#loop").attr("id","loop-mobile");
+	$("#lyrics").attr("id","lyrics-mobile");
+	$("#lyrics-mobile").attr("onclick","lyricsMobile()");
+
 
 	songTitle = document.getElementById("song_title-mobile");
 	songImage = document.getElementById("img-mobile");
@@ -680,6 +698,82 @@ function songManipulate(goto){
 
 	
 }
+
+
+
+
+
+function lyricsMobile(){
+
+	var lyricsObj = LYRICS[currentSong];
+	if (lyricsObj == undefined){
+		lyricsExists = false;
+	}
+	else {
+		lyricsExists = true;
+	}
+
+	let html = `
+	<span id="lyrics-text-mobile"></span>
+	
+	`;
+
+
+	Swal.fire({
+		background:"#171617",
+		html:html,
+		position:"top",
+		grow:"row",
+		showConfirmButton:false,
+		customClass:{
+			popup:"lyrics-popup-mobile"
+		},
+		onOpen:() => {
+			showLyrics = true;
+			//$("#lyrics-mobile").css("color","green");
+			$("#lyrics-mobile").css("visibility","hidden");
+		},
+		onClose:() => {
+			showLyrics = false;
+			//$("#lyrics-mobile").css("color","#867f7f");
+			$("#lyrics-mobile").css("visibility","visible");
+		},
+		onDestroy:() => {
+			showLyrics = false;
+			//$("#lyrics-mobile").css("color","#867f7f");
+			$("#lyrics-mobile").css("visibility","visible");
+		}
+
+	});
+
+	$(".swal2-popup").css("height","50vh");
+
+
+	if (lyricsExists){
+		let songObj = SONGS[currentSong];
+		$("#lyrics-text-mobile").html(`<span id="temp-song-name" class="w3-text-blue">${songObj.name}</span><br>`);
+		$("#lyrics-text-mobile").append(`<br><span id="temp-artist-name" class="w3-text-gray artist-name">By ${songObj.artist}</span>`);
+		$("#temp-song-name").css("font-size","2.5rem");
+		$("#temp-artist-name").css("font-size","1.1rem");
+	}
+	if (!lyricsExists){
+		$("#lyrics-text-mobile").html(`<span class="w3-text-danger">No lyrics for this song in our database</span>`)
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
