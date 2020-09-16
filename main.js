@@ -161,7 +161,7 @@ var songTitle = document.getElementById("song_title");
 var artistName = document.getElementById("artist_name");
 var songImage = document.getElementById("img");
 
-var MUSIC_PLAYER;
+var MUSIC_PLAYER = $("body").html();
 var currentSong = 1;
 var fillBar = document.getElementById("fill");
 var SONGS_BACKUP = SONGS;
@@ -288,7 +288,7 @@ function playSong(){
 
 		},500)
 	}
-	
+
 	
 
 	
@@ -614,7 +614,7 @@ function imageAnimation(){
 
 
 
-function page_load(){
+function pageLoad(){
 	if (CLIENT_WIDTH > 1200 && CLIENT_HEIGHT > 400){
 		console.log("PC DEVICE");
 		pcDisplay();
@@ -625,7 +625,8 @@ function page_load(){
 		mobileDisplay();
 	}
 	else {
-		document.write("Site is not supported for your device")
+		document.write("Site is not supported for your device");
+		pcDisplay();
 	}
 
 
@@ -799,7 +800,7 @@ function lyricsMobile(){
 
 
 function main(){
-	page_load();
+	pageLoad();
 	extra();
 
 
