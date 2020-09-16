@@ -14,6 +14,7 @@ function drawer(){
 		let divHTML = `
 		<div id="drawer-song-div-mobile" 
 		onclick="drawerPlaySong(${id})">
+
 			<img src="${img_src}" id="drawer-song-image-mobile" 
 			alt="IMAGE ERROR"/>
 
@@ -21,7 +22,7 @@ function drawer(){
 			class="drawer-song-${id}">
 			${obj.name}</span><br>
 			<span id="drawer-artist-name-mobile">
-			${obj.artist}</span><br>
+			${obj.artist}</span>
 		</div>
 		`
 	

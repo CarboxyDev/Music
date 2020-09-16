@@ -348,15 +348,15 @@ body{
 	left:10%;
 	top:10%;
 	font-family: "Comfortaa";
-	font-size:1rem;
+	font-size:0.9rem;
 }
 
 #drawer-artist-name-mobile{
 	position: relative;
-	left:26%;
+	left:28%;
 	top:-5%;
 	font-family: "lato";
-	font-size:0.8rem;
+	font-size:0.75rem;
 	color:#867f7f;
 }
 
@@ -366,6 +366,7 @@ body{
 	top:25%;
 	height:9vh;
 	width:9vh;
+
 }
 
 
