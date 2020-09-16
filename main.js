@@ -161,7 +161,7 @@ var songTitle = document.getElementById("song_title");
 var artistName = document.getElementById("artist_name");
 var songImage = document.getElementById("img");
 
-
+var MUSIC_PLAYER;
 var currentSong = 1;
 var fillBar = document.getElementById("fill");
 var SONGS_BACKUP = SONGS;
@@ -263,9 +263,12 @@ function playSong(){
 	if (!songObj.image){
 		songObj.image = "main"
 	}
+
 	songImage.src = `images/${songObj.image}.png`;
 	song.src = `songs/${songObj.file}.mp3`;
+
 	song.play();
+
 
 
 	if (!IS_MOBILE){
@@ -285,6 +288,7 @@ function playSong(){
 
 		},500)
 	}
+	
 	
 
 	
@@ -528,8 +532,11 @@ function playFirst(){
 	}
 
 	$("#play").attr("onclick","playPause()");
+	
 
 	playSong();
+	
+
 }
 
 

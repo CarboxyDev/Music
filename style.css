@@ -327,3 +327,53 @@ body{
 	font-family: "Comfortaa";
 }
 
+
+
+#drawer-main-mobile{
+	height:15vh;
+	width:100%;
+	background-color: #201d1d;
+	border-bottom: 0.5px solid #111111;
+}
+
+#drawer-song-div-mobile{
+	background-color:#171617;
+	border-bottom: 0.5px solid #111111;
+	height:15vh;
+	width:100vw;
+}
+
+#drawer-song-name-mobile{
+	position: relative;
+	left:10%;
+	top:10%;
+	font-family: "Comfortaa";
+	font-size:1rem;
+}
+
+#drawer-artist-name-mobile{
+	position: relative;
+	left:26%;
+	top:-5%;
+	font-family: "lato";
+	font-size:0.8rem;
+	color:#867f7f;
+}
+
+#drawer-song-image-mobile{
+	position: relative;
+	left:5%;
+	top:25%;
+	height:9vh;
+	width:9vh;
+}
+
+
+#home-mobile{
+	font-size:1.75rem;
+	color:#867f7f;
+	position: relative;
+	left:3vh;
+	top:3vh;
+
+}
