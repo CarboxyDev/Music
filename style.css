@@ -330,7 +330,7 @@ body{
 
 
 #drawer-main-mobile{
-	height:15vh;
+	height:10vh;
 	width:100%;
 	background-color: #201d1d;
 	border-bottom: 0.5px solid #111111;
@@ -366,6 +366,7 @@ body{
 	top:25%;
 	height:9vh;
 	width:9vh;
+	display:inline;
 
 }
 
@@ -374,7 +375,61 @@ body{
 	font-size:1.75rem;
 	color:#867f7f;
 	position: relative;
-	left:3vh;
-	top:3vh;
+	margin-left:2.75%;
+	margin-top:2.25%;
+}
+
+
+
+
+
+
+#drawer-blank-mobile{
+	background-color:#171617;
+	border-bottom: 0.5px solid #111111;
+	height:15vh;
+	width:100vw;
+}
+
+
+
+#miniplayer-mobile{
+	position: fixed;
+	bottom:0;
+	height:10vh;
+	width:100vw;
+	background-color: #111111;
+}
+
+
+
+
+#miniplayer-image-mobile{
+	height:10vh;
+	width:10vh;
 
 }
+
+
+
+#miniplayer-song-mobile{
+	font-size:0.8rem;
+	position: relative;
+	left:2%;
+	font-family: "Comfortaa";
+
+
+}
+
+
+#miniplayer-btn-mobile{
+	color:white;
+
+	font-size:1.25rem;
+	float: right;
+	position: relative;
+	right:5%;
+	top:20%;
+}
+
+

@@ -172,6 +172,8 @@ var filterStatus = false;
 var filteredArtist = null;
 var showLyrics = false;
 var lyricsExists = false;
+var isPaused = false;
+
 
 song.addEventListener('timeupdate',function(){
 
@@ -268,6 +270,9 @@ function playSong(){
 	song.src = `songs/${songObj.file}.mp3`;
 
 	song.play();
+	if (isPaused){
+		song.pause()
+	}
 
 
 
@@ -489,11 +494,13 @@ function playPause(){
 	if (song.paused){
 		song.play();
 		$("#play").html(`<i class="fa fa-pause "></i>`);
+		isPaused = false;
 	}
 	else {
 		song.currentTime -= 1;
 		song.pause();
 		$("#play").html(`<i class="fa fa-play "></i>`);
+		isPaused = true;
 	}
 
 }
