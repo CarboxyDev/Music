@@ -1,27 +1,29 @@
 
 function drawer(){
-	let html = `<div id="drawer"> 
-	<div id="drawer-main-mobile">
-	<i id="home-mobile" class="fa fa-home" 
+
+	var html = `<div id="drawer"> 
+	<div id="drawer-main">
+	<i id="home" class="fa fa-home" 
 	onclick="player()"></i>
 	</div>`;
 
 
 	for (var id in SONGS){
+
 		let obj = SONGS[id];
 
 		let img_src = `images/${obj.image}.png`;
 		let divHTML = `
-		<div id="drawer-song-div-mobile" 
+		<div id="drawer-song-div" 
 		onclick="drawerPlaySong(${id})">
 
-			<img src="${img_src}" id="drawer-song-image-mobile" 
+			<img src="${img_src}" id="drawer-song-image" 
 			alt="IMAGE ERROR"/>
 
-			<span id="drawer-song-name-mobile" 
+			<span id="drawer-song-name" 
 			class="drawer-song-${id}">
 			${obj.name}</span><br>
-			<span id="drawer-artist-name-mobile">
+			<span id="drawer-artist-name">
 			${obj.artist}</span>
 		</div>
 		`
@@ -30,6 +32,7 @@ function drawer(){
 		
 
 		html += divHTML
+
 	}
 	if (isPaused){
 		var mp_icon = "play";
@@ -39,13 +42,13 @@ function drawer(){
 		var mp_icon = "pause";
 	}
 	html += `
-	<div id="drawer-blank-mobile">
+	<div id="drawer-blank">
 	</div>
-	<div id="miniplayer-mobile" class="">
+	<div id="miniplayer" class="">
 
-		<img id="miniplayer-image-mobile" />
-		<span id="miniplayer-song-mobile"></span>
-		<span id="miniplayer-btn-mobile" 
+		<img id="miniplayer-image" />
+		<span id="miniplayer-song"></span>
+		<span id="miniplayer-btn" 
 		class="" onclick="playPauseMiniplayer()">
 		<i class="fa fa-${mp_icon}"></i>
 		</span>
@@ -56,7 +59,7 @@ function drawer(){
 
 	html += "</div>";
 
-	$("#main-mobile").hide();
+	$("#main").hide();
 	$("body").append(html);
 
 	$(`.drawer-song-${currentSong}`).css("color","#10c326");
@@ -73,7 +76,7 @@ function drawer(){
 function player(){
 
 	$("#drawer").remove();
-	$("#main-mobile").show();
+	$("#main").show();
 
 }
 
@@ -90,9 +93,9 @@ function drawerPlaySong(id){
 
 function miniplayer(){
 	let songObj = SONGS[currentSong];
-	$("#miniplayer-image-mobile").attr("src",`images/${songObj.image}.png`);
-	$("#miniplayer-song-mobile").html(`${songObj.name}`);
-	$("#miniplayer-image-mobile").click(function(){
+	$("#miniplayer-image").attr("src",`images/${songObj.image}.png`);
+	$("#miniplayer-song").html(`${songObj.name}`);
+	$("#miniplayer-image").click(function(){
 		player();
 	});
 }
@@ -105,14 +108,14 @@ function playPauseMiniplayer(){
 	if (song.paused){
 		song.play();
 		$("#play").html(`<i class="fa fa-pause "></i>`);
-		$("#miniplayer-btn-mobile").html(`<i class="fa fa-pause"></i>`);
+		$("#miniplayer-btn").html(`<i class="fa fa-pause"></i>`);
 		isPaused = false;
 	}
 	else {
 		song.currentTime -= 1;
 		song.pause();
 		$("#play").html(`<i class="fa fa-play "></i>`);
-		$("#miniplayer-btn-mobile").html(`<i class="fa fa-play"></i>`);
+		$("#miniplayer-btn").html(`<i class="fa fa-play"></i>`);
 		isPaused = true;
 	}
 }

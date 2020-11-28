@@ -1,3 +1,5 @@
+// will export as json
+
 var SONGS =  
 {
 
@@ -150,7 +152,7 @@ var SONGS =
 
 }
 
-//TECHNICAL
+
 
 var CLIENT_HEIGHT = $(window).height();
 var CLIENT_WIDTH = $(window).width();
@@ -168,8 +170,6 @@ var SONGS_BACKUP = SONGS;
 var song = new Audio();
 var shuffle = false;
 var loop = false;
-var filterStatus = false;
-var filteredArtist = null;
 var showLyrics = false;
 var lyricsExists = false;
 var isPaused = false;
@@ -188,7 +188,7 @@ song.addEventListener('timeupdate',function(){
 			var ctime = Math.round(song.currentTime);
 			var timestamps = Object.keys(LYRICS[currentSong]);
 			if (timestamps.includes(`${ctime}`)){
-				$("#lyrics-text-mobile").html(LYRICS[currentSong][ctime]);
+				$("#lyrics-text").html(LYRICS[currentSong][ctime]);
 			}		
 		}
 
@@ -213,28 +213,10 @@ var durationDisplayLag;
 
 
 function playSong(){
-	if (filterStatus == true){
 
-		SONGS = {};
-		var counter = 0;
-		for (var x in SONGS_BACKUP){
+	
+	SONGS = SONGS_BACKUP;
 
-			var search = Object.values(SONGS_BACKUP);
-			if (SONGS_BACKUP[x]["artist"]  == filteredArtist){
-				counter += 1;
-				
-				SONGS[counter] = SONGS_BACKUP[x];
-			}
-			
-		}
-		
-
-
-
-	}
-	if (!filterStatus){
-		SONGS = SONGS_BACKUP;
-	}
 	if (!loop){
 
 		if (shuffle){
@@ -276,30 +258,23 @@ function playSong(){
 
 
 
-	if (!IS_MOBILE){
-		$("#song_title").text(songObj.name);
-	}
-	else if (IS_MOBILE){
-		$("#song_title-mobile").text(songObj.name);
-		$("#artist_name-mobile").text(songObj.artist);
+	$("#song_title").text(songObj.name);
+	$("#artist_name").text(songObj.artist);
 		
 		
-		durationDisplayLag = setInterval(function(){
-			let ct = duration();
-			$("#song_time-mobile").text(ct);
+	durationDisplayLag = setInterval(function(){
+		let ct = duration();
+		$("#song_time").text(ct);
 
-			clearInterval(durationDisplayLag);
-
-
-		},500)
-	}
-
-	
-
-	
+		clearInterval(durationDisplayLag);
 
 
+	},500)
 }
+
+	
+
+
 
 function duration(){
 		
@@ -332,9 +307,9 @@ function songCtime(){
 	}
 	let val = `${mins}:${sec}`;
 	
-	if (IS_MOBILE){
-		$("#current_time-mobile").text(val);
-	}
+	
+	$("#current_time").text(val);
+	
 }
 
 
@@ -343,16 +318,16 @@ function toggleShuffle(){
 	
 	if (shuffle){
 		shuffle = false;
-		if (IS_MOBILE){
-			$("#shuffle-mobile").css("color","#867f7f");
-		}
+		
+		$("#shuffle").css("color","#867f7f");
+		
 		
 	}
 	else {
 		shuffle = true;
-		if (IS_MOBILE){
-			$("#shuffle-mobile").css("color","#289c22");
-		}
+	
+		$("#shuffle").css("color","#289c22");
+		
 	}
 
 }
@@ -362,112 +337,20 @@ function toggleLoop(){
 
 	if (loop){
 		loop = false;
-		if (IS_MOBILE){
-			$("#loop-mobile").css("color","#867f7f");
-		}
+	
+		$("#loop").css("color","#867f7f");
+		
 		
 	}
 	else {
 		loop = true;
-		if (IS_MOBILE){
-			$("#loop-mobile").css("color","royalblue");
-		}
+
+		$("#loop").css("color","royalblue");
+		
 	}
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-function filter(){
-
-	let html = `
-	<button onclick="artistFilter('disable')"
-	id="all-filter-btn" class="btn btn-success bal">
-	All Songs</button><br><br><br>
-
-	<button onclick="artistFilter('Ed Sheeran')" 
-	id="ed-sheeran-filter-btn" class="btn btn-info bal">
-	Ed Sheeran Songs
-	</button><br><br>
-
-	<button onclick="artistFilter('Linkin Park')" 
-	id="linkin-parl-filter-btn" class="btn btn-info bal">
-	Linkin Park Songs
-	</button>
-
-
-
-	`;
-	Swal.fire({
-		html:html,
-		background:"#171617",
-		position:"top-start",
-		showConfirmButton:false,
-		showCloseButton:true,
-		grow:"column",
-		width:"90%",
-		customClass: {
-    		popup: `
-		      animate__animated
-		      animate__fadeInLeft
-		     
-		    `
- 		},
-  		hideClass: {
-    		popup: `
-    			animate__animated
-      			animate__fadeOutLeft
-      			animate__faster
-    		`
-  		}
-
-	})
-}
-
-
-function artistFilter(artist){
-	if (artist == "disable"){
-		filterStatus = false;
-		toast.fire({
-			title:"All songs visible",
-			icon:"success"
-		})
-	}
-	else {
-		filterStatus = true;
-		filteredArtist = artist;
-		toast.fire({
-			title:`Only ${artist} songs visible`,
-			icon:"success"
-		})
-	}
-
-	
-}
-
-
-
-
-
-const toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 2000,
-  timerProgressBar: true
- 
-})
-
-
 
 
 
@@ -511,32 +394,23 @@ function playPause(){
 
 
 function playFirst(){
-	if (!IS_MOBILE){
 
-		$("#start").html(`<i class="fa fa-pause"></i>`);
-		$("#start").attr("onclick",null);
-		$("#start").attr("id","play");
-		$("#back").css("visibility","visible");
-		$("#next").css("visibility","visible");
-		$("#seekbar").css("visibility","visible");
-	}
-	else if (IS_MOBILE){
+	
 
-		$("#start-mobile").html(`<i class="fa fa-pause"></i>`)
-		$("#start-mobile").attr("onclick",null);
-		$("#start-mobile").attr("id","play");
-		$("#back-mobile").css("visibility","visible");
-		$("#next-mobile").css("visibility","visible");
-		$("#play").addClass("play-mobile");
-		$("#seekbar-mobile").css("visibility","visible");
-		$("#time-mobile").css("visibility","visible");
-		$("#shuffle-mobile").css("visibility","visible");
-		$("#filter-mobile").css("visibility","visible");
-		$("#loop-mobile").css("visibility","visible");
-		$("#lyrics-mobile").css("visibility","visible");
-		$("#drawer-mobile").css("visibility","visible");
+	$("#start").html(`<i class="fa fa-pause"></i>`)
+	$("#start").attr("onclick",null);
+	$("#start").attr("id","play");
+	$("#back").css("visibility","visible");
+	$("#next").css("visibility","visible");
+	$("#play").addClass("play");
+	$("#seekbar").css("visibility","visible");
+	$("#time").css("visibility","visible");
+	$("#shuffle").css("visibility","visible");
+	$("#loop").css("visibility","visible");
+	$("#lyrics").css("visibility","visible");
+	$("#drawer-icon").css("visibility","visible");
 
-	}
+
 
 	$("#play").attr("onclick","playPause()");
 	
@@ -641,49 +515,12 @@ function pageLoad(){
 }
 
 function pcDisplay(){
-	let html = 
-	`
-	<div class="w3-display-middle">
-	<h2 class="w3-text-amber casual">Please use a mobile to access this site.</h2>
-	<br><br>
-	<h5 class="w3-text-gray casual">Alternatively, you could use mobile display on PC</h5>
-	</div>
-	`
-	$("body").html(html);
-	$("body").css("background-color","black");
+	
 }
 
 
 function mobileDisplay(){
 	IS_MOBILE = true;
-
-	$("#main").attr("id","main-mobile");
-	$("#image").attr("id","image-mobile");
-	$("#img").attr("id","img-mobile");
-	$("#player").attr("id","player-mobile");
-	$("#song_title").attr("id","song_title-mobile");
-	$("#artist_name").attr("id","artist_name-mobile");
-	$("#buttons").attr("id","buttons-mobile");
-	$("#back").attr("id","back-mobile");
-	$("#next").attr("id","next-mobile");
-	$("#start").attr("id","start-mobile");
-	$("#seekbar").attr("id","seekbar-mobile");
-	$("#fill").attr("id","fill-mobile");
-	$("#handle").attr("id","handle-mobile");
-	$("#time").attr("id","time-mobile");
-	$("#current_time").attr("id","current_time-mobile");
-	$("#song_time").attr("id","song_time-mobile");
-	$("#shuffle").attr("id","shuffle-mobile");
-	$("#filter").attr("id","filter-mobile");
-	$("#loop").attr("id","loop-mobile");
-
-	$("#lyrics").attr("id","lyrics-mobile");
-	$("#lyrics-mobile").attr("onclick","lyricsMobile()");
-	$("#drawer").attr("id","drawer-mobile");
-
-	songTitle = document.getElementById("song_title-mobile");
-	songImage = document.getElementById("img-mobile");
-	var fillBar = document.getElementById("fill-mobile");
 
 }
 
@@ -704,7 +541,7 @@ song.addEventListener('timeupdate',function(){
 
 function extra(){
 
-	$("#seekbar-mobile").click(function(){
+	$("#seekbar").click(function(){
 		var x = event.clientX;
 		var goto = x-50;
 		
@@ -716,7 +553,7 @@ function extra(){
 
 function songManipulate(goto){
 
-	let reverseWidth  = Math.round((goto/$("#seekbar-mobile").width())*100);
+	let reverseWidth  = Math.round((goto/$("#seekbar").width())*100);
 	 
 	song.currentTime = (song.duration*reverseWidth)/100;
 
@@ -728,7 +565,7 @@ function songManipulate(goto){
 
 
 
-function lyricsMobile(){
+function lyrics(){
 
 	var lyricsObj = LYRICS[currentSong];
 	if (lyricsObj == undefined){
@@ -739,7 +576,7 @@ function lyricsMobile(){
 	}
 
 	let html = `
-	<span id="lyrics-text-mobile"></span>
+	<span id="lyrics-text"></span>
 	
 	`;
 
@@ -751,22 +588,22 @@ function lyricsMobile(){
 		grow:"row",
 		showConfirmButton:false,
 		customClass:{
-			popup:`lyrics-popup-mobile`
+			popup:`lyrics-popup`
 		},
-		onOpen:() => {
+		didOpen:() => {
 			showLyrics = true;
-			//$("#lyrics-mobile").css("color","green");
-			$("#lyrics-mobile").css("visibility","hidden");
+			//$("#lyrics").css("color","green");
+			$("#lyrics").css("visibility","hidden");
 		},
-		onClose:() => {
+		didClose:() => {
 			showLyrics = false;
-			//$("#lyrics-mobile").css("color","#867f7f");
-			$("#lyrics-mobile").css("visibility","visible");
+			//$("#lyrics").css("color","#867f7f");
+			$("#lyrics").css("visibility","visible");
 		},
-		onDestroy:() => {
+		didDestroy:() => {
 			showLyrics = false;
-			//$("#lyrics-mobile").css("color","#867f7f");
-			$("#lyrics-mobile").css("visibility","visible");
+			//$("#lyrics").css("color","#867f7f");
+			$("#lyrics").css("visibility","visible");
 		}
 
 	});
@@ -776,13 +613,13 @@ function lyricsMobile(){
 
 	if (lyricsExists){
 		let songObj = SONGS[currentSong];
-		$("#lyrics-text-mobile").html(`<span id="temp-song-name" class="w3-text-blue">${songObj.name}</span><br>`);
-		$("#lyrics-text-mobile").append(`<br><span id="temp-artist-name" class="w3-text-gray artist-name">By ${songObj.artist}</span>`);
+		$("#lyrics-text").html(`<span id="temp-song-name" class="w3-text-blue">${songObj.name}</span><br>`);
+		$("#lyrics-text").append(`<br><span id="temp-artist-name" class="w3-text-gray artist-name">By ${songObj.artist}</span>`);
 		$("#temp-song-name").css("font-size","2.5rem");
 		$("#temp-artist-name").css("font-size","1.1rem");
 	}
 	if (!lyricsExists){
-		$("#lyrics-text-mobile").html(`<span class="w3-text-danger">No lyrics for this song in our database</span>`)
+		$("#lyrics-text").html(`<span class="w3-text-danger">No lyrics for this song in our database</span>`)
 	}
 
 
