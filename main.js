@@ -496,21 +496,16 @@ function imageAnimation(){
 
 
 function pageLoad(){
-	if (CLIENT_WIDTH > 1200 && CLIENT_HEIGHT > 400){
-		console.log("PC DEVICE");
-		pcDisplay();
-	
-	}
-	else if (CLIENT_WIDTH < 800){
+
+	if (CLIENT_WIDTH < 800){
 		console.log("MOBILE DEVICE");
 		mobileDisplay();
 	}
 	else {
-		document.write("Site is not supported for your device");
+		console.log("PC DEVICE");
 		pcDisplay();
+	
 	}
-
-
 
 }
 
