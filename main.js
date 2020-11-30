@@ -497,7 +497,7 @@ function imageAnimation(){
 
 function pageLoad(){
 
-	if (CLIENT_WIDTH < 800){
+	if (CLIENT_WIDTH < 748){
 		console.log("MOBILE DEVICE");
 		mobileDisplay();
 	}

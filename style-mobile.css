@@ -1,4 +1,4 @@
-@media all and (max-width:748px){
+@media all and (max-width:420px){
 
 
 	#image {
@@ -323,7 +323,9 @@
 
 
 
-
+	#warning {
+		display: none;
+	}
 
 
 
