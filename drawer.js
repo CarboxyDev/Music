@@ -19,12 +19,13 @@ function drawer(){
 
 			<img src="${img_src}" id="drawer-song-image" 
 			alt="IMAGE ERROR"/>
-
-			<span id="drawer-song-name" 
-			class="drawer-song-${id}">
-			${obj.name}</span><br>
-			<span id="drawer-artist-name">
-			${obj.artist}</span>
+			<div id="drawer-details"><br>
+				<span id="drawer-song-name" 
+				class="drawer-song-${id}">
+				${obj.name}</span><br>
+				<span id="drawer-artist-name">
+				${obj.artist}</span>
+			</div>
 		</div>
 		`
 	

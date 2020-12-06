@@ -47,108 +47,59 @@ var SONGS =
 		image:"divide"
 	},
 	8:{
-		name:"What Do I know?",
-		artist:"Ed Sheeran",
-		file:"what_do_i_know",
-		image:"divide"
-	},
-	9:{
-		name:"Supermarket Flowers",
-		artist:"Ed Sheeran",
-		file:"supermarket_flowers",
-		image:"divide"
-	},
-	10:{
-		name:"Safe & Sound",
-		artist:"Different Heaven",
-		file:"safe_and_sound",
-		image:"ncs"
-	},
-	11:{
-		name:"Barcelona",
-		artist:"Ed Sheeran",
-		file:"barcelona",
-		image:"divide"
-	},
-	12:{
 		name:"Photograph",
 		artist:"Ed Sheeran",
 		file:"photograph",
 		image:"multiply"
 	},
-	13:{
-		name:"War",
-		artist:"Linkin Park",
-		file:"war",
-		image:"the_hunting_party"
-	},
-	14:{
+	9:{
 		name:"One",
 		artist:"Ed Sheeran",
 		file:"one",
 		image:"multiply"
 	},
-	15:{
-		name:"Galway Girl",
-		artist:"Ed Sheeran",
-		file:"galway_girl",
-		image:"divide"
-	},
-	16:{
-		name:"The Office Theme",
-		artist:"Michael Scott",
-		file:"the_office_theme",
-		image:"the_office"
-	},
-	17:{
+	10:{
 		name:"Waiting For Love",
 		artist:"Avicii",
 		file:"waiting_for_love",
 		image:"stories"
 	},
-	18:{
+	11:{
 		name:"I Don't Care",
 		artist:"Ed Sheeran",
 		file:"i_dont_care",
 		image:"collaborations"
 	},
-	19:{
+	12:{
 		name:"Breaking The Habit",
 		artist:"Linkin Park",
 		file:"breaking_the_habit",
 		image:"meteora"
 	},
-	20:{
+	13:{
 		name:"The Days",
 		artist:"Avicii",
 		file:"the_days",
 		image:"stories"
 	},
-	21:{
+	14:{
 		name:"The Nights",
 		artist:"Avicii",
 		file:"the_nights",
 		image:"stories"
 	},
-	22:{
+	15:{
 		name:"Thinking Out Loud",
 		artist:"Ed Sheeran",
 		file:"thinking_out_loud",
 		image:"multiply"
 	},
-	23:{
+	16:{
 		name:"Tenerife Sea",
 		artist:"Ed Sheeran",
 		file:"tenerife_sea",
 		image:"multiply"
-	},
-	24:{
-		name:"Dream Of Something Sweet",
-		artist:"K-391",
-		file:"dream_of_something_sweet",
-		image:"ncs2"
 	}
-
 
 }
 
@@ -572,7 +523,7 @@ function lyrics(){
 
 	let html = `
 	<span id="lyrics-text"></span>
-	
+
 	`;
 
 

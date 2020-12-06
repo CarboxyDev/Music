@@ -187,12 +187,14 @@
 	#lyrics{
 		visibility: hidden;
 		display:inline;
-		position: relative;
-		left:41%;
 		color:#867f7f;
 		border:1px solid #867f7f;
-		padding-left:5px ;
-		padding-right:5px ;
+		padding-left:5px;
+		padding-right:5px;
+		position: absolute;
+		left:50%;
+		top:95%;
+		transform:translateX(-50%);
 
 	}
 
@@ -220,21 +222,25 @@
 		width:100vw;
 	}
 
+	#drawer-details {
+		display: inline;
+		position: absolute;
+		left:27.5%;
+
+	}
+
+
 	#drawer-song-name{
-		position: relative;
-		left:10%;
-		top:10%;
 		font-family: "Comfortaa";
 		font-size:0.9rem;
 	}
 
 	#drawer-artist-name{
-		position: relative;
-		left:28%;
-		top:-5%;
+
 		font-family: "lato";
 		font-size:0.75rem;
 		color:#867f7f;
+		
 	}
 
 	#drawer-song-image{

@@ -43,7 +43,7 @@ LYRICS = {
 		169:"I'm out of touch, I'm out of love",
 		172:"I'll pick you up when you're getting down",
 		175:"And out of all these things I've done I think I love you better now",
-		183:"<span class='w3-text-amber end-text'>Lyrics by wraithM17</span>"
+		183:"<span class='w3-text-amber end-text'>Made with <span class='w3-text-red'>❤</span></span>"
 
 	}
 
